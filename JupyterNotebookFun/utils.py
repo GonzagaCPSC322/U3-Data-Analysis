@@ -26,3 +26,12 @@ def get_frequencies(table, header, col_name):
 
 def dummy_function():
     print("Hello!!! AGAIN ~~~~dijfaksjf")
+
+def group_by(table, header, group_by_col_name):
+    group_by_col = get_column(table, header, group_by_col_name)
+    group_by_col_index = header.index(group_by_col_name)
+
+    group_names = sorted(list(set(group_by_col))) # e.g. [75, 76, 77]
+    group_subtables = [[] for _ in group_names] # e.g. [[], [], []]
+
+    
