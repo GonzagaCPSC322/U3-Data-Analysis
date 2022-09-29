@@ -34,4 +34,10 @@ def group_by(table, header, group_by_col_name):
     group_names = sorted(list(set(group_by_col))) # e.g. [75, 76, 77]
     group_subtables = [[] for _ in group_names] # e.g. [[], [], []]
 
-    
+    # walk through each row and figure out which subtable 
+    # it belongs to
+    for row in table:
+        group_by_val = row[group_by_col_index]
+        subtable_index = group_names.index(group_by_val) # e.g. 0 1 or 2
+        group_subtables[subtable_index].append(row)
+    return group_names, group_subtables
