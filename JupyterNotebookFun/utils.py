@@ -41,3 +41,14 @@ def group_by(table, header, group_by_col_name):
         subtable_index = group_names.index(group_by_val) # e.g. 0 1 or 2
         group_subtables[subtable_index].append(row)
     return group_names, group_subtables
+
+def compute_equal_width_cutoffs(values, num_bins):
+    values_range = max(values) - min(values)
+    bin_width = values_range / num_bins
+    # bin_width is probably a float
+    # we will use numpy's version of range()
+    cutoffs = list(np.arange(min(values), max(values), bin_width))
+    cutoffs.append(max(values))
+    # optionally, round
+    cutoffs = [round(cutoff, 2) for cutoff in cutoffs]
+    return cutoffs
