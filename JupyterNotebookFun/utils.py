@@ -42,6 +42,7 @@ def compute_equal_width_cutoffs(values, num_bins):
     bin_width = values_range / num_bins
     # bin_width is probably a float
     # we will use numpy's version of range()
+    # https://numpy.org/doc/stable/reference/generated/numpy.arange.html
     cutoffs = list(np.arange(min(values), max(values), bin_width))
     cutoffs.append(max(values))
     # optionally, round
